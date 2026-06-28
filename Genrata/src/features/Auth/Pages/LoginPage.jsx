@@ -1,10 +1,19 @@
 import React from "react";
+import LeftPanel from "../Components/LeftPanel";
+import LoginForm from "../Components/LoginForm";
 
 const LoginPage = () => {
   return (
-    <div className="login-Container w-full h-screen flex justify-center items-center bg-black">
-      fadsdfafasdas
-    </div>
+    <main className="min-h-screen bg-[#0F0F17] flex items-center justify-center px-6 py-10">
+      {/* Main Login Container */}
+      <section className="w-full max-w-6xl overflow-hidden rounded-2xl bg-[#18181B] shadow-2xl md:grid md:grid-cols-2">
+        {/* Left Branding Panel */}
+        <LeftPanel />
+
+        {/* Right Login Form */}
+        <LoginForm />
+      </section>
+    </main>
   );
 };
 
