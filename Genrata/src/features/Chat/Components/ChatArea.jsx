@@ -4,81 +4,72 @@
  * ------------------------------------------
  * Responsibilities:
  * • Display Welcome Screen
- * • Show Suggested Prompts
- * • Display Chat Messages (Later)
+ * • Display Chat Messages
+ * • Handle Empty State
  * ==========================================
  */
 
+import { useState } from "react";
+import ChatMessage from "./ChatMessage";
+import WelcomeScreen from "./WelcomeScreen";
+import useChatStore from "../store/chat.store";
+
 const ChatArea = () => {
-  // Suggested prompts
-  const suggestions = [
+
+let messages = useChatStore((state) => state.chatHistory);
+
+
+  const dummyMessages = [
     {
-      title: "Build React App",
-      description: "Create a modern React project with Tailwind CSS.",
-      icon: "⚛️",
+      role: "user",
+      message: "Hello, how are you?",
+      time: "10:30 AM",
     },
     {
-      title: "Explain AI",
-      description: "Learn Artificial Intelligence from scratch.",
-      icon: "🤖",
+      role: "assistant",
+      message: "I'm good, thank you! How can I assist you today?",
+      time: "10:31 AM",
     },
     {
-      title: "Write Code",
-      description: "Generate clean and reusable React components.",
-      icon: "💻",
+      role: "user",
+      message: "Can you tell me a joke?",
+      time: "10:32 AM",
     },
     {
-      title: "Generate Image",
-      description: "Create AI-powered images from text prompts.",
-      icon: "🎨",
+      role: "assistant",
+      message:
+        "Why don't scientists trust atoms? Because they make up everything!",
+      time: "10:33 AM",
     },
   ];
 
+
+
   return (
-    <section className="flex flex-1 flex-col items-center justify-center px-6">
-      {/* ===============================
-          Welcome Section
-      =============================== */}
+    <section className="flex-1 overflow-hidden bg-[#0F0F11]">
+      {/* ==========================================
+          Empty Chat
+      ========================================== */}
 
-      <div className="max-w-3xl text-center">
-        {/* Logo */}
-
-        <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-indigo-600 text-3xl font-bold text-white shadow-lg">
-          G
+      {messages.length === 0 ? (
+        <WelcomeScreen />
+      ) : (
+        /* ==========================================
+            Chat Messages
+        ========================================== */
+        <div className="h-full overflow-y-auto px-6 py-8">
+          <div className="mx-auto flex w-full max-w-5xl flex-col gap-6">
+            {messages.map((message, index) => (
+              <ChatMessage
+                key={index}
+                role={message.role}
+                message={message.message}
+                time={message.time}
+              />
+            ))}
+          </div>
         </div>
-
-        {/* Heading */}
-
-        <h1 className="text-5xl font-bold text-white">Welcome to Genrata AI</h1>
-
-        {/* Subtitle */}
-
-        <p className="mt-4 text-lg text-gray-400">
-          Ask questions, generate code, create content, or explore new ideas
-          with your AI assistant.
-        </p>
-      </div>
-
-      {/* ===============================
-          Suggested Prompts
-      =============================== */}
-
-      <div className="mt-14 grid w-full max-w-5xl gap-5 md:grid-cols-2">
-        {suggestions.map((item, index) => (
-          <button
-            key={index}
-            className="rounded-2xl border border-[#2A2A2F] bg-[#18181B] p-6 text-left transition duration-300 hover:border-indigo-500 hover:bg-[#202024]"
-          >
-            <div className="mb-4 text-3xl">{item.icon}</div>
-
-            <h3 className="text-lg font-semibold text-white">{item.title}</h3>
-
-            <p className="mt-2 text-sm leading-6 text-gray-400">
-              {item.description}
-            </p>
-          </button>
-        ))}
-      </div>
+      )}
     </section>
   );
 };
