@@ -75,10 +75,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={<LoginPage />}
-        />
+        <Route path="/" element={<LoginPage />} />
       </Routes>
     </BrowserRouter>
   );
@@ -117,10 +114,7 @@ export default App;
 ## Route
 
 ```jsx
-<Route
-    path="/"
-    element={<LoginPage />}
-/>
+<Route path="/" element={<LoginPage />} />
 ```
 
 Each route has two important properties.
@@ -130,7 +124,7 @@ Each route has two important properties.
 The URL.
 
 ```jsx
-path="/"
+path = "/";
 ```
 
 Examples
@@ -180,20 +174,11 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={<LoginPage />}
-        />
+        <Route path="/" element={<LoginPage />} />
 
-        <Route
-          path="/register"
-          element={<RegisterPage />}
-        />
+        <Route path="/register" element={<RegisterPage />} />
 
-        <Route
-          path="/dashboard"
-          element={<DashboardPage />}
-        />
+        <Route path="/dashboard" element={<DashboardPage />} />
       </Routes>
     </BrowserRouter>
   );
@@ -206,10 +191,10 @@ export default App;
 
 # Route Table
 
-| URL | Component |
-|------|-----------|
-| `/` | LoginPage |
-| `/register` | RegisterPage |
+| URL          | Component     |
+| ------------ | ------------- |
+| `/`          | LoginPage     |
+| `/register`  | RegisterPage  |
 | `/dashboard` | DashboardPage |
 
 ---
@@ -219,10 +204,7 @@ export default App;
 React Router supports dynamic parameters.
 
 ```jsx
-<Route
-    path="/user/:id"
-    element={<UserPage />}
-/>
+<Route path="/user/:id" element={<UserPage />} />
 ```
 
 Example URLs
@@ -245,9 +227,9 @@ Inside the component:
 import { useParams } from "react-router-dom";
 
 function UserPage() {
-    const { id } = useParams();
+  const { id } = useParams();
 
-    return <h1>User ID : {id}</h1>;
+  return <h1>User ID : {id}</h1>;
 }
 ```
 
@@ -258,10 +240,7 @@ function UserPage() {
 Handle unknown routes using `*`.
 
 ```jsx
-<Route
-    path="*"
-    element={<NotFoundPage />}
-/>
+<Route path="*" element={<NotFoundPage />} />
 ```
 
 If no route matches, React Router renders the 404 page.
@@ -275,15 +254,11 @@ Use `Link` instead of `<a>`.
 ```jsx
 import { Link } from "react-router-dom";
 
-<Link to="/">
-    Login
-</Link>
+<Link to="/">Login</Link>;
 ```
 
 ```jsx
-<Link to="/dashboard">
-    Dashboard
-</Link>
+<Link to="/dashboard">Dashboard</Link>
 ```
 
 Using `<Link>` prevents a full page reload.
@@ -298,18 +273,13 @@ Navigate using JavaScript.
 import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const login = () => {
+    navigate("/dashboard");
+  };
 
-    const login = () => {
-        navigate("/dashboard");
-    };
-
-    return (
-        <button onClick={login}>
-            Login
-        </button>
-    );
+  return <button onClick={login}>Login</button>;
 }
 ```
 
@@ -319,24 +289,11 @@ function LoginPage() {
 
 ```jsx
 <Routes>
+  <Route path="/dashboard" element={<DashboardLayout />}>
+    <Route index element={<HomePage />} />
 
-    <Route
-        path="/dashboard"
-        element={<DashboardLayout />}
-    >
-
-        <Route
-            index
-            element={<HomePage />}
-        />
-
-        <Route
-            path="settings"
-            element={<SettingsPage />}
-        />
-
-    </Route>
-
+    <Route path="settings" element={<SettingsPage />} />
+  </Route>
 </Routes>
 ```
 
@@ -389,10 +346,7 @@ No routes matched location
 Make sure the `path` exists or add a fallback route.
 
 ```jsx
-<Route
-    path="*"
-    element={<NotFoundPage />}
-/>
+<Route path="*" element={<NotFoundPage />} />
 ```
 
 ---
@@ -424,35 +378,19 @@ import DashboardPage from "./features/Dashboard/Pages/DashboardPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
-    return (
-        <BrowserRouter>
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
 
-            <Routes>
+        <Route path="/register" element={<RegisterPage />} />
 
-                <Route
-                    path="/"
-                    element={<LoginPage />}
-                />
+        <Route path="/dashboard" element={<DashboardPage />} />
 
-                <Route
-                    path="/register"
-                    element={<RegisterPage />}
-                />
-
-                <Route
-                    path="/dashboard"
-                    element={<DashboardPage />}
-                />
-
-                <Route
-                    path="*"
-                    element={<NotFoundPage />}
-                />
-
-            </Routes>
-
-        </BrowserRouter>
-    );
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
@@ -478,7 +416,7 @@ npm install react-router-dom
 
 ```jsx
 <Routes>
-    <Route path="/" element={<HomePage />} />
+  <Route path="/" element={<HomePage />} />
 </Routes>
 ```
 

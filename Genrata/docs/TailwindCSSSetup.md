@@ -30,10 +30,7 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
+  plugins: [react(), tailwindcss()],
 });
 ```
 
@@ -52,10 +49,7 @@ const host = process.env.TAURI_DEV_HOST;
 
 // https://vite.dev/config/
 export default defineConfig(async () => ({
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
+  plugins: [react(), tailwindcss()],
 
   // Prevent Vite from clearing the terminal
   clearScreen: false,
@@ -103,11 +97,11 @@ That's it!
 
 Unlike older versions of Tailwind, **Tailwind CSS v4** does **not** require:
 
-* `tailwind.config.js`
-* `postcss.config.js`
-* `@tailwind base`
-* `@tailwind components`
-* `@tailwind utilities`
+- `tailwind.config.js`
+- `postcss.config.js`
+- `@tailwind base`
+- `@tailwind components`
+- `@tailwind utilities`
 
 The single import is enough.
 
@@ -218,9 +212,9 @@ Tailwind styles are not applied.
 
 ### Check these points:
 
-* `app.css` is imported in `main.jsx`.
-* `tailwindcss()` is added to the Vite plugins.
-* You restarted the Vite development server after installation.
+- `app.css` is imported in `main.jsx`.
+- `tailwindcss()` is added to the Vite plugins.
+- You restarted the Vite development server after installation.
 
 Restart the server:
 
@@ -266,10 +260,7 @@ npm install tailwindcss @tailwindcss/vite
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
+  plugins: [react(), tailwindcss()],
 });
 ```
 
