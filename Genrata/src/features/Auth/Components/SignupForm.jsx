@@ -15,9 +15,11 @@
  * ===========================================
  */
 
+import { Link } from "react-router-dom";
+
 const SignupForm = () => {
   return (
-    <section className="flex items-center justify-center px-8 py-12">
+    <section className="h-[150vh] flex items-center justify-center px-8 py-12">
       <div className="w-full max-w-lg">
         {/* =========================
             Heading
@@ -189,9 +191,12 @@ const SignupForm = () => {
 
         <p className="mt-8 text-center text-sm text-gray-400">
           Already have an account?
-          <button className="ml-1 font-medium text-indigo-400 hover:text-indigo-300">
+          <Link
+            to="/"
+            className="ml-1 font-medium text-indigo-400 hover:text-indigo-300"
+          >
             Sign In
-          </button>
+          </Link>
         </p>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   return (
@@ -91,9 +92,12 @@ const LoginForm = () => {
         {/* Footer */}
         <p className="mt-8 text-center text-sm text-gray-400">
           Don't have an account?
-          <button className="ml-1 text-indigo-400 hover:text-indigo-300">
+          <Link
+            to="/signup"
+            className="ml-1 text-indigo-400 hover:text-indigo-300"
+          >
             Sign Up
-          </button>
+          </Link>
         </p>
       </div>
     </section>

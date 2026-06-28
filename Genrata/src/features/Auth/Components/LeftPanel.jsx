@@ -1,10 +1,10 @@
 import React from "react";
 
-const LeftPanel = () => {
+const LeftPanel = ({ imgUrl }) => {
   return (
     <aside className="hidden md:flex flex-col items-center justify-center  text-white">
       <img
-        src="https://1857756846.rsc.cdn77.org/static/features/ai-portrait/man-restyle-1.jpeg"
+        src={imgUrl}
         alt="Brand Logo"
         className="w-full h-full object-cover"
       />
